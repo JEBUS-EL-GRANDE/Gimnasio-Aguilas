@@ -60,20 +60,32 @@ class ClienteController extends Controller
         // Ejecutar inserción bajo transacción segura para asegurar integridad de datos
         DB::beginTransaction();
         try {
-            // Crear la Persona
-            $persona = Persona::create([
-                'ci' => $request->ci,
-                'nombre' => $request->nombre,
-                'apellido' => $request->apellido,
-                'telefono' => $request->telefono,
-                'direccion' => $request->direccion,
-                'sexo' => $request->sexo,
-                'fecha_registro' => now()->toDateString(),
-            ]);
+            // Reutilizar o crear la Persona
+            if ($personaExistente) {
+                $personaExistente->update([
+                    'nombre' => $request->nombre,
+                    'apellido' => $request->apellido,
+                    'telefono' => $request->telefono,
+                    'direccion' => $request->direccion,
+                    'sexo' => $request->sexo,
+                ]);
+                $persona = $personaExistente;
+            } else {
+                $persona = Persona::create([
+                    'ci' => $request->ci,
+                    'nombre' => $request->nombre,
+                    'apellido' => $request->apellido,
+                    'telefono' => $request->telefono,
+                    'direccion' => $request->direccion,
+                    'sexo' => $request->sexo,
+                    'fecha_registro' => now()->toDateString(),
+                ]);
+            }
 
             // Crear el Cliente asociado
             $cliente = Cliente::create([
                 'id_persona' => $persona->id_persona,
+                'fecha_limite' => $request->fecha_limite ?? now()->toDateString(),
                 'estado' => true,
             ]);
 
@@ -113,16 +125,21 @@ class ClienteController extends Controller
         DB::beginTransaction();
         try {
             $persona->update($request->only(['ci', 'nombre', 'apellido', 'telefono', 'direccion', 'sexo']));
-            $cliente->update([
+            
+            $clienteData = [
                'estado' => $request->input('estado', $cliente->estado),
-            ]);
+            ];
+            if ($request->filled('fecha_limite')) {
+                $clienteData['fecha_limite'] = $request->fecha_limite;
+            }
+            $cliente->update($clienteData);
 
             DB::commit();
             return redirect()->route('clientes.index')->with('success', 'Cambios guardados con éxito.');
         } catch (\Exception $e) {
             DB::rollBack();
             throw ValidationException::withMessages([
-                'error' => 'Error al actualizar los datos.',
+                'error' => 'Error al actualizar los datos: ' . $e->getMessage(),
             ]);
         }
     }

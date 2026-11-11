@@ -39,6 +39,7 @@ const ejecutarBusqueda = () => {
 
 // Control de apertura del Modal
 const abrirModalFormulario = (cliente = null) => {
+  form.clearErrors();
   if (cliente) {
     editando.value = true;
     idClienteSeleccionado.value = cliente.id_cliente;
@@ -57,6 +58,7 @@ const abrirModalFormulario = (cliente = null) => {
 
 const cerrarModal = () => {
   modalAbierto.value = false;
+  form.clearErrors();
   form.reset();
 };
 

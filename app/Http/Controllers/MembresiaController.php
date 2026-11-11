@@ -142,7 +142,10 @@ class MembresiaController extends Controller
                 throw new \Exception($pagoResponse['message']);
             }
 
-            // ❌ ELIMINADO: fecha_limite (YA NO EXISTE EN EL DISEÑO)
+            // Sincronizar fecha límite del cliente con el vencimiento de su membresía
+            $cliente->update([
+                'fecha_limite' => $fechaVencimiento->toDateString(),
+            ]);
 
             DB::commit();
 

@@ -3,7 +3,7 @@
 Sistema web para la gestion del Gimnasio Aguilas, desarrollado como proyecto de la materia **Sistemas de Información 2 (INF-412)**. ***Permite administrar y automatizar los procesos administrativos relacionados con el registro de clientes, gestion de membresias, control de pagos y generacion de reportes financieros, y backups de seguridad***.
 
 ### Proyecto compilado
-![video de proyecto ya compilado](public/Becav1.gif "video de mi proyecto ya compilado")
+![video de proyecto ya compilado](public/gimnasio.gif "video de mi proyecto ya compilado")
 
 <h2 id="integrantesA">Integrantes del proyecto:</h2>
 
@@ -106,6 +106,7 @@ Usuario encargado de realizar las operaciones cotidianas de atencion al cliente 
 
 ---
 <h2 id="InstalacionA">Instalación Y Configuración local en diferentes Sistemas Operativos:</h2>
+recuerda actualizar sus paquetes ante, para evitar errores al momento de la instalacion.
 
 ```bash
 #dentro del proyecto (cd BecaComedor)
@@ -142,10 +143,13 @@ sudo pacman -S nodejs npm                       #instalar npm
 ```bash
 sudo apt install php php-cli php-mysql php-mbstring php-xml php-curl php-zip
 sudo apt install composer                       #Instalar Composer
+sudo apt install nodejs npm -y                  #instala npm
 ```
 
 <h3> crea usuario admin en tu BASE DE DATOS : <img src="public/mariadb.svg" width="20" height="20">  <img src="public/postgresql.svg" width="20" height="20">  <img src="public/mongodb.svg" width="20" height="20"></h3>
 con este primer usuario podras crear al resto de usuarios que tienen roles:
+
+<img src="public/BDimg.jpeg">
 
 **Tabla personas:**
 ```bash

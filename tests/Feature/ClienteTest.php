@@ -55,4 +55,46 @@ test('administrator can register a client', function () {
 
     $cliente = Cliente::where('id_persona', $persona->id_persona)->first();
     expect($cliente)->not->toBeNull();
+    expect($cliente->fecha_limite)->not->toBeNull();
+});
+
+test('recepcionista can register a client', function () {
+    $personaRecep = Persona::create([
+        'ci' => '2222222',
+        'nombre' => 'Recep',
+        'apellido' => 'Test',
+        'sexo' => 'F',
+        'fecha_registro' => now(),
+    ]);
+
+    $recepcionista = Usuario::create([
+        'id_persona' => $personaRecep->id_persona,
+        'id_turno' => $this->turno->id_turno,
+        'login' => 'recep_test',
+        'email' => 'recep@test.com',
+        'contrasenia' => Hash::make('password'),
+        'rol' => 'Recepcionista',
+        'fecha_contrato' => now(),
+        'estado' => true,
+    ]);
+
+    $response = $this->actingAs($recepcionista)->post('/clientes', [
+        'ci' => '8888888',
+        'nombre' => 'Jane',
+        'apellido' => 'Doe',
+        'telefono' => '78888888',
+        'direccion' => 'Calle Central 456',
+        'sexo' => 'F',
+    ]);
+
+    $response->assertSessionHasNoErrors();
+    $response->assertRedirect('/clientes');
+
+    $persona = Persona::where('ci', '8888888')->first();
+    expect($persona)->not->toBeNull();
+    expect($persona->nombre)->toBe('Jane');
+
+    $cliente = Cliente::where('id_persona', $persona->id_persona)->first();
+    expect($cliente)->not->toBeNull();
+    expect($cliente->fecha_limite)->not->toBeNull();
 });

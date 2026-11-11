@@ -14,7 +14,7 @@ return new class extends Migration
             // Relación 1:1 con Persona (Herencia)
             $table->foreignId('id_persona')->constrained('personas', 'id_persona')->onDelete('cascade');
             
-            $table->date('fecha_limite');
+            $table->date('fecha_limite')->nullable();
             $table->boolean('estado')->default(true);
             $table->timestamps();
         });
