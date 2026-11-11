@@ -109,7 +109,7 @@ Usuario encargado de realizar las operaciones cotidianas de atencion al cliente 
 
 ---
 <h2 id="InstalacionA">Instalación Y Configuración local en diferentes Sistemas Operativos:</h2>
-recuerda actualizar sus paquetes ante, para evitar errores al momento de la instalacion.
+recuerda actualizar sus paquetes antes, para evitar errores al momento de la instalacion.
 
 ```bash
 #dentro del proyecto (cd BecaComedor)
