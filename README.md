@@ -16,11 +16,14 @@ Sistema web para la gestion del Gimnasio Aguilas, desarrollado como proyecto de 
 ## Informacion directa
 - [Instalacion](#InstalacionA)
 - [Descripcion breve](#descripcionA)
+- [modulos](#modulosA)
+- [stack Tegnologico](#tegnologiaA)
 - [Modelo de base de datos](#basededatosA)
 - [tipos de Roles](#rolesA)
+- [tu primer usuario](#usuarioA)
 
 
-<h2 id="descripcionA">Caracteristicas principales</h2>
+<h2 id="modulosA">Caracteristicas principales(modulos)</h2>
 
 *El sistema permite administrar los principales procesos del gimnasio mediante diferentes modulos*
 
@@ -34,8 +37,8 @@ Sistema web para la gestion del Gimnasio Aguilas, desarrollado como proyecto de 
 - Generacion de reportes: Consultas e informes relacionados con clientes, membresias e ingresos.
 - Gestion de copias de seguridad: Generacion y restauracion de respaldos de la base de datos (backups).
 
+<h2 id="tegnologiaA">Stack Tecnológico usado</h2>
 
-## Stack Tecnológico usado
 
 | Capa | Tecnología |
 |------|-----------|
@@ -51,7 +54,7 @@ Sistema web para la gestion del Gimnasio Aguilas, desarrollado como proyecto de 
 | **Gestor de dependencias Frontend** | npm |
 
 --------------------------------------------------------------------------------
-<h2 id="rolesA">Arquitectura General</h2>
+<h2 id="arquitecturaA">Arquitectura General</h2>
 El sistema utiliza una arquitectura web de tres capas, organizada mediante el patron Modelo-Vista-Controlador (MVC) proporcionado por Laravel.
 
 1. **Capa de Presentacion:** Encargada de proporcionar las interfaces graficas con las que interactuan los usuarios.
@@ -146,7 +149,7 @@ sudo apt install composer                       #Instalar Composer
 sudo apt install nodejs npm -y                  #instala npm
 ```
 
-<h3> crea usuario admin en tu BASE DE DATOS : <img src="public/mariadb.svg" width="20" height="20">  <img src="public/postgresql.svg" width="20" height="20">  <img src="public/mongodb.svg" width="20" height="20"></h3>
+<h3 id="usuarioA"> crea usuario admin en tu BASE DE DATOS : <img src="public/mariadb.svg" width="20" height="20">  <img src="public/postgresql.svg" width="20" height="20">  <img src="public/mongodb.svg" width="20" height="20"></h3>
 con este primer usuario podras crear al resto de usuarios que tienen roles:
 
 <img src="public/BDimg.jpeg">
