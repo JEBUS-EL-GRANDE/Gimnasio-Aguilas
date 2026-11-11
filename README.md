@@ -112,7 +112,7 @@ Usuario encargado de realizar las operaciones cotidianas de atencion al cliente 
 recuerda actualizar sus paquetes antes, para evitar errores al momento de la instalacion.
 
 ```bash
-#dentro del proyecto (cd BecaComedor)
+#entra al proyecto y dentro del proyecto ejecuta estos comandos(cd Gimnasio-Aguilas)
 php --ini                                       #para buscar el php.ini descomenta la bd que usaras
 composer install                                #instalar composer
 #composer update --ignore-platform-reqs         #(si da error el composer install)
