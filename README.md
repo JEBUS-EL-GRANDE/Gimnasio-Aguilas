@@ -148,7 +148,7 @@ sudo apt install php php-cli php-mysql php-mbstring php-xml php-curl php-zip
 sudo apt install composer                       #Instalar Composer
 sudo apt install nodejs npm -y                  #instala npm
 ```
-
+--------------------------------------------------------------------------------
 <h3 id="usuarioA"> crea usuario admin en tu BASE DE DATOS : <img src="public/mariadb.svg" width="20" height="20">  <img src="public/postgresql.svg" width="20" height="20">  <img src="public/mongodb.svg" width="20" height="20"></h3>
 con este primer usuario podras crear al resto de usuarios que tienen roles:
 
